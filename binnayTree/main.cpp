@@ -8,7 +8,7 @@ struct Nodo
 	int dato;
 	Nodo *der;
 	Nodo *izq;
-	
+
 };
 void imprimirArbol(Nodo *arbol, int count);
 void menu();
@@ -28,14 +28,14 @@ int main()
 //función para mostrar el arbol completo
 void imprimirArbol(Nodo * arbol, int count)
 {
-	if(arbol == NULL)
+	if (arbol == NULL)
 	{
 		return;
 	}
 	else
 	{
 		imprimirArbol(arbol->der, count + 1);
-		for(int i=0; i<count; i++)
+		for (int i = 0; i<count; i++)
 		{
 			std::cout << "   " << std::endl;
 		};
@@ -62,7 +62,7 @@ void menu()
 		switch (option)
 		{
 		case 1:
-			std::cout << "Ponga el numero a insertar en el arbol"<<std::endl;
+			std::cout << "Ponga el numero a insertar en el arbol" << std::endl;
 			std::cin >> dato;
 			insertNode(arbol, dato);
 			system("pause");
@@ -76,11 +76,12 @@ void menu()
 			std::cout << "Que elemento quiere buscar : ";
 			cin >> dato;
 
-			if(busqueda(arbol, dato) == true)
+			if (busqueda(arbol, dato) == true)
 			{
 				std::cout << "El elemento " << dato << " " << "ha sido encontrado en el arbol" << std::endl;
 
-			}else
+			}
+			else
 			{
 				std::cout << "El elemento " << dato << " " << " NO	ha sido encontrado en el arbol" << std::endl;
 
@@ -115,14 +116,15 @@ Nodo * crearNodo(int n)
 //insertar un nodo en el arbol 
 void insertNode(Nodo *&arbol, int n)
 {
-	if(arbol == NULL) //Si el arbol esta vacío creamos un nuevo nodo
+	if (arbol == NULL) //Si el arbol esta vacío creamos un nuevo nodo
 	{
 		Nodo *nuevo_nodo = crearNodo(n);
 		arbol = nuevo_nodo;
-	}else //si el aarbol tiene un nodo o mas de un nodo
+	}
+	else //si el aarbol tiene un nodo o mas de un nodo
 	{
 		int valoArbol = arbol->dato;
-		if(n<valoArbol)//si el valor que queremos insertar es mas pequeño que el valor del nodo raiz insertamos en izq
+		if (n<valoArbol)//si el valor que queremos insertar es mas pequeño que el valor del nodo raiz insertamos en izq
 		{
 			insertNode(arbol->izq, n);
 		}
@@ -130,21 +132,21 @@ void insertNode(Nodo *&arbol, int n)
 		{
 			insertNode(arbol->der, n);
 		}
-		
+
 	}
 }
 
 bool busqueda(Nodo * arbol, int n)
 {
-	if(arbol == NULL) //si el arbol esta vacío retornamos falsle
+	if (arbol == NULL) //si el arbol esta vacío retornamos falsle
 	{
 		return false;
 	}
-	else if(arbol->dato = n)
+	else if (arbol->dato = n)
 	{
 		return true;
 	}
-	else if(n< arbol->dato) //si el elemento es mas peque buscamos por el lado izquierdo
+	else if (n< arbol->dato) //si el elemento es mas peque buscamos por el lado izquierdo
 	{
 		busqueda(arbol->izq, n);
 	}
